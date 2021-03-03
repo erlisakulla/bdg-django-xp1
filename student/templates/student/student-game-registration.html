@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static '/css/style.css' %}">
+<style></style>
+</head>
+
+<body>
+
+<h1 class="index-title">STUDENT GAME REGISTRATION</h2>
+
+<div class="background">
+  <div class="container">
+    <div class="panel index-table">
+      <div class="index-option">
+        
+        <h2 class="index-header">GAME REGISTRATION FORM</h2>
+
+        <form action="#/"> 
+          <!-- Add restrictions for empty fields, emails and passwords -->
+          <div class="form-cont">
+            <hr>
+            <input type="text" placeholder="Enter Full Name" name="student-full-name" id="student-full-name" required>
+
+            <input type="text" placeholder="Select Instructor Name" name="student-selected-instructor" id="student-selected-instructor" required> <!-- Will display list of available registered instructors from database -->
+
+            <input type="text" placeholder="Enter Email" name="student-email" id="student-email" required>
+            <hr>
+
+            <a href="/" class="index-button cancelbtn">Cancel</a>
+            <a href="#/" type="submit" class="index-button registerbtn">Submit</a>
+          </div>
+          <div class="cont signin">
+            <p>Already registered in a game? <a class="bottom-links" href="/enter-game">Enter game here.</a></p>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

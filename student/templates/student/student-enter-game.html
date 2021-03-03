@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static '/css/style.css' %}">
+<style></style>
+</head>
+
+<body>
+
+<h1 class="index-title">STUDENT ENTER GAME</h2>
+
+<div class="background">
+  <div class="container">
+    <div class="panel index-table">
+      <div class="index-option">
+        
+        <h2 class="index-header">ENTER GAME FORM</h2>
+
+        <form action="#/"> 
+          <!-- Add restrictions for empty fields, emails and passwords -->
+          <div class="form-cont">
+            <hr>
+            <input type="text" placeholder="Enter Email" name="student-email" id="student-email" required>
+
+            <input type="text" placeholder="Enter Game Number" name="game-number" id="game-number" required>
+
+            <input type="text" placeholder="Enter Game Password" name="game-pass" id="game-pass" required>
+            <hr>
+
+            <a href="/" class="index-button cancelbtn">Cancel</a>
+            <a href="#/" type="submit" class="index-button loginbtn">Enter Game</a>
+          </div>
+          
+          <div class="cont signin">
+            <p>Not registered in any game? <a class="bottom-links" href="/game-registration">Register here.</a></p>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
