@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.models import Group
@@ -90,14 +89,3 @@ admin.site.register(InstructorUser, UserAdmin)
 # ... and, since we're not using Django's built-in permissions,
 # unregister the Group model from admin.
 admin.site.unregister(Group)
-=======
-from django.contrib import admin
-
-# Register your models here.
-
-from .models import Instructor
-from student.models import Student
-
-admin.site.register(Instructor)
-admin.site.register(Student)
->>>>>>> ce29bf3716dd0ce95bd0600ec0cc41dbd2acf737
