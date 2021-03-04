@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
@@ -23,3 +24,8 @@ class Game(models.Model):
     
     def __str__(self):
 	    return self.game_id
+=======
+from django.db import models
+
+# Create your models here.
+>>>>>>> ce29bf3716dd0ce95bd0600ec0cc41dbd2acf737
