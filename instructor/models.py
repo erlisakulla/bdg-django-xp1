@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.db import models
 from django.contrib.auth.models import (
 	BaseUserManager, AbstractBaseUser
@@ -54,17 +53,3 @@ class InstructorUser(AbstractBaseUser):
 	@property
 	def is_staff(self):
 		return self.is_admin
-=======
-from django.db import models
-
-
-# Create your models here.
-
-class Instructor(models.Model):
-	full_name = models.CharField(max_length=50)
-	email = models.EmailField(max_length=50)
-	password = models.CharField(max_length=32)
-
-	def __str__(self):
-		return self.full_name
->>>>>>> ce29bf3716dd0ce95bd0600ec0cc41dbd2acf737
