@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from student.models import *
+from .models import *
 from django.contrib.auth.forms import UserCreationForm
 
 from .forms import InstructorRegistrationForm
@@ -21,6 +22,14 @@ def instructor_registration(request):
 def instructor_login(request):
 	return render(request, 'instructor/instructor-login.html')
 
+#first needs to be changed, the idea is to prepend id to instructor, but i don't know ids of instructors
 def instructor_dashboard(request):
+	instructor = Instructor.objects.first()
+	# instructor = Instructor.objects.get(id=pk)
 	students = Student.objects.all()
-	return render(request, 'instructor/dashboard.html', {'students':students})
+	# quite risky to have fks as full name
+	students_for_instructor = Student.objects.filter(instructor_name=instructor.id)
+	
+	
+	context = {'students': students_for_instructor, 'instructor': instructor}
+	return render(request, 'instructor/dashboard.html', context)
