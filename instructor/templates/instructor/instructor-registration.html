@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static '/css/style.css' %}">
+<style></style>
+</head>
+
+<body>
+
+<h1 class="index-title">INSTRUCTOR REGISTRATION</h2>
+
+<div class="background">
+  <div class="container">
+    <div class="panel index-table">
+      <div class="index-option">
+
+        <h2 class="index-header">REGISTRATION FORM</h2>
+
+        <form method="POST" action="#/">
+          <div class="form-cont">
+            <hr>
+            {% csrf_token %}
+
+            {{form.full_name}}
+            {{form.email}}
+            {{form.password1}}
+            {{form.password2}}
+            <hr>
+
+            <a href="/" class="index-button cancelbtn">Cancel</a>
+            <input type="submit" class="index-button registerbtn" value="Register" style="cursor: pointer !important;">
+          </div>
+          
+          <div class="errorlist" style="color: red">
+          {% for field, error in form.errors.items %}
+              {% if field != '__all__' %}{{ field }}{% endif %} 
+              <br>
+              {{ error | striptags }}
+              <br>
+          {% endfor %}
+          </div>
+          <div class="cont signin">
+            <p>Already have an account? <a class="bottom-links" href="/login">Login here.</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var form_fields = document.getElementsByTagName('input')
+  form_fields[1].placeholder='Enter Full Name';
+  form_fields[2].placeholder='Enter Email';
+  form_fields[3].placeholder='Enter Password';
+  form_fields[4].placeholder='Re-enter Password';
+
+  for (var field in form_fields) {
+    form_fields[field].className += 'form-control'
+  }
+</script>
+
+</body>
+</html>

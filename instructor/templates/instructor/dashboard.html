@@ -1,0 +1,122 @@
+{% extends 'instructor/navbar.html' %}
+
+{% block content %}
+<!-- WELCOME-->
+<section class="welcome p-t-10">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 style="padding-top: 20px;" class="title-4">Welcome back
+                    <span>{{request.user.full_name}}!</span>
+                </h1>
+                <hr class="line-seprate">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END WELCOME-->
+            
+<!-- DATA TABLE-->
+<section class="p-t-20">
+    <div class="container" style="padding-bottom: 30px;">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="title-5 m-b-35">Students List</h3>
+                <div class="table-data__tool">
+                    <div class="table-data__tool-left">
+                        <!-- SEARCH BAR -->
+                        <form class="form-header" action="" method="GET">
+                            <!-- Non functional, needs to be implemented -->
+
+                            {{myFilter.form.full_name}}
+                            <!-- <input class="au-input au-input--xl" type="text" name="search" placeholder="Search students by name. . ." /> -->
+                            <button class="au-btn--submit" type="submit">
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!-- FILTERS -->
+                    <!-- These filters are not yet implemented -->
+                    <div class="table-data__tool-right">
+                        <button class="au-btn au-btn-icon au-btn--green au-btn--small">
+                            <i class="zmdi zmdi-plus"></i>Assign Selected</button>
+                        <div class="rs-select2--light rs-select2--md">
+                            <select class="js-select2" name="property">
+                                <option selected="selected">All Students</option>
+                                <option value="">Assigned</option>
+                                <option value="">Not Assigned</option>
+                            </select>
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                        <div class="rs-select2--light rs-select2--sm" style="width: 160px;">
+                            <select class="js-select2" name="time">
+                                <option selected="selected">Time Registered</option>
+                                <option value="">Most Recent</option>
+                                <option value="">Oldest</option>
+                            </select>
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- TABLE DATA -->
+                <div class="table-responsive table-responsive-data2">
+                    <table class="table table-data2">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </th>
+                                <th>name</th>
+                                <th>email</th>
+                                <th>date registered</th>
+                                <th>assigned games</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in students %}
+
+                            <tr class="tr-shadow">
+                                <td>
+                                    <label class="au-checkbox">
+                                        <input type="checkbox">
+                                        <span class="au-checkmark"></span>
+                                    </label>
+                                </td>
+                                <td>{{i.full_name}}</td>
+                                <td>
+                                    <span class="block-email">{{i.email}}</span>
+                                </td>
+                                <td>{{i.time_registered}}</td>
+                                <td>
+                                    <span class="status--process">{{i.assigned_games}}</span>
+                                </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Send Email">
+                                            <i class="zmdi zmdi-mail-send"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Assign Games">
+                                            <i class="zmdi zmdi-account-add"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END DATA TABLE-->
+
+{% endblock %}

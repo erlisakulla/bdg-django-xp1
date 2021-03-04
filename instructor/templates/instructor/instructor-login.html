@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static '/css/style.css' %}">
+<style></style>
+</head>
+
+<body>
+
+<h1 class="index-title">INSTRUCTOR LOGIN</h2>
+
+<div class="background">
+  <div class="container">
+    <div class="panel index-table">
+      <div class="index-option">
+        
+        <h2 class="index-header">LOGIN FORM</h2>
+
+        <form method='POST' action="#"> 
+          <!-- Add restrictions for empty fields, emails and passwords -->
+          {% csrf_token %}
+          <div class="form-cont">
+            <hr>
+
+            <input type="text" placeholder="Enter Email" name="username" id="instructor-email" required>
+
+            <input type="password" placeholder="Enter Password" name="password" id="instructor-psw" required>
+            <hr>
+
+            <a href="/" class="index-button cancelbtn">Cancel</a>
+            <input type="submit" class="index-button loginbtn" value="Log In" style="background-color: #6996ff; cursor: pointer !important;">
+          </div>
+
+          {% for message in messages %}
+            <p id="messages" style="color:blue"> {{message}} </p>
+          {% endfor %}
+          
+          <div class="cont signin">
+            <p>Don't have an account? <a class="bottom-links" href="/register">Register here.</a></p>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
