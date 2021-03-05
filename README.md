@@ -20,7 +20,7 @@ Below you can find some useful resources and tutorials about Django implementati
 * Instructor can change password and delete their account
 
 ##### Further implementation ideas/aims:
-* 
+
 
 # How to run
 
@@ -28,6 +28,13 @@ Assumming that you have ```pip``` and ```django``` installed you can run the pro
 ```
 python manage.py runserver
 ```
+If you get errors, make sure you have psycopg2 module installed: 
+
+```
+pip install psycopg2-binary
+```
+
+
 Then go to the address provided by the server: http://127.0.0.1:8000/. It will take you to the main home page. To access admin features and the database provided by django itself simply go to http://127.0.0.1:8000/admin/. Which will require you to enter an email and password. We created an admin user with the credentials below:   
 * **Email:** manager@beergame.com	 
 * **Password:** manager  
