@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from student.models import *
+from game.models import *
 
 from .forms import InstructorRegistrationForm
+from game.forms import GameCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
@@ -54,11 +56,12 @@ def instructor_logout(request):
 @login_required(login_url='login')
 def instructor_dashboard(request):
 	students = Student.objects.all()
-
 	myFilter = StudentFilter(request.GET, queryset=students)
 	students = myFilter.qs
 
-	context = {'students':students, 'myFilter':myFilter}
+	students_for_instructor = Student.objects.filter(instructor_name=request.user.id)
+	
+	context = {'students':students_for_instructor, 'myFilter':myFilter}
 
 	return render(request, 'instructor/dashboard.html', context)
 
@@ -69,5 +72,12 @@ def instructor_settings(request):
 
 # @login_required(login_url='login')
 def create_game(request):
-	context = {}
+	form = GameCreationForm()
+	if request.method == 'POST':
+		form = GameCreationForm(request.POST)
+		if form.is_valid():
+			form.save()
+			#redirect to view games
+		
+	context = {'form':form}
 	return render(request, 'instructor/create-game.html', context)
