@@ -12,15 +12,14 @@ Below you can find some useful resources and tutorials about Django implementati
 
 # Description
 ##### What we have implemented so far:
-* Instructor can register and login
+* Instructor can register and login (we have not implemented student registration and log in)
 * Student can register for games
 * Instructor can only view registered students that have him/her as an instructor
-* Instructor can create and view list of games (no game logic implemented yet)
-* Instructor can delete Student from list
-* Instructor can change password and delete their account
+* Instructor can create and view list of games created by them (no game logic implemented yet)
 
 ##### Further implementation ideas/aims:
-
+* Instructor can delete Student or Game from list
+* Instructor can change password and delete their account
 
 # How to run
 

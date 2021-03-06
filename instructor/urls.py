@@ -8,4 +8,5 @@ urlpatterns = [
     path('dashboard/', views.instructor_dashboard, name='dashboard'),
     path('settings/', views.instructor_settings, name='settings'),
     path('create-game/', views.create_game, name='create-game'),
+    path('games-list/', views.games_list, name='games-list'),
 ]

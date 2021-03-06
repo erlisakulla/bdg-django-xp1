@@ -1,0 +1,95 @@
+{% extends 'instructor/navbar.html' %}
+
+{% block content %}
+            
+<!-- DATA TABLE-->
+<section class="p-t-20">
+    <div class="container">
+        <h1 class="title-5 m-b-35">All Games List</h1>
+            
+    </div> 
+</section>
+<div class="table-responsive table-responsive-data2"> 
+    <div class="col-md-12">
+        <div class="table-data__tool">
+            <!-- FILTERS -->
+            <!-- These filters are not yet implemented -->
+            <div class="table-data__tool-right">
+                <a href="/create-game" class="au-btn au-btn-icon au-btn--green au-btn--small" style="background-color: #6996ff;">
+                    <i class="zmdi zmdi-plus"></i>Create Game</a>
+                <div class="rs-select2--light rs-select2--md">
+                    <select class="js-select2" name="property">
+                        <option selected="selected">All Games</option>
+                        <option value="">Assigned</option>
+                        <option value="">Not Assigned</option>
+                    </select>
+                    <div class="dropDownSelect2"></div>
+                </div>
+            </div>
+        </div>
+        <!-- TABLE DATA -->
+        <div class="table-responsive table-responsive-data2">
+            <table class="table table-data2">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>time delay</th>
+                        <th>has wholesaler</th>
+                        <th>has retailer</th>
+                        <th>demand pattern</th>
+                        <th>holding cost</th>
+                        <th>backorder cost</th>
+                        <th>reset</th>
+                        <th>Freeze/Unfreeze</th>
+                        <th>weeks</th>
+                        <th>players</th>
+                        <th>passwords</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in games %}
+
+                    <tr class="tr-shadow">
+                        <td>{{i.game_id}}</td>
+                        <td>{{i.info_delay}}</td>
+                        <td>{{i.has_wholesaler}}</td>
+                        <td>{{i.has_retailer}}</td>
+                        <td>{{i.demand_id}}</td>
+                        <td>{{i.holding_cost}}</td>
+                        <td>{{i.backlog_cost}}</td>
+                        <td>  
+                            <button class="btn btn-primary btn-sm" style="background-color: grey; border: none;">Reset</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" style="background-color: grey; border: none;">Freeze</button>
+                        </td>
+                        <td>{{i.number_weeks}}</td>
+                        <td>{{i.player_ids}}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" style="background-color: grey; border: none;">Passwords</button>
+                        </td>
+                        <td>
+                            <div class="table-data-feature">
+                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit Settings">
+                                    <i class="zmdi zmdi-edit"></i> <!-- Once game is assigned and has started, you can't edit settings -->
+                                </button>
+                                <button class="item" data-toggle="tooltip" data-placement="top" title="Assign Game">
+                                    <i class="zmdi zmdi-account-add"></i>
+                                </button>
+                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="spacer"></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- END DATA TABLE-->
+
+{% endblock %}

@@ -70,14 +70,24 @@ def instructor_settings(request):
 	context = {}
 	return render(request, 'instructor/settings.html', context)
 
-# @login_required(login_url='login')
+@login_required(login_url='login')
 def create_game(request):
 	form = GameCreationForm()
 	if request.method == 'POST':
 		form = GameCreationForm(request.POST)
 		if form.is_valid():
+			# get the id of the instructor that created game and save it in Game.instructor
 			form.save()
+			redirect('games-list')
 			#redirect to view games
 		
 	context = {'form':form}
 	return render(request, 'instructor/create-game.html', context)
+
+@login_required(login_url='login')
+def games_list(request): # (request, pk)
+	games = Game.objects.all()
+	# games = Game.objects.get(instructor=pk)
+	
+	context = {'games':games}
+	return render(request, 'instructor/games-list.html', context)
