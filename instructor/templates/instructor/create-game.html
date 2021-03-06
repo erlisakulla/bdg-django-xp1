@@ -61,6 +61,14 @@
               </a>
               <input type="submit" class="btn btn-primary btn-sm" value="Submit" style="cursor: pointer !important;">
             </div>
+            <div class="errorlist" style="color: red">
+              {% for field, error in form.errors.items %}
+                  {% if field != '__all__' %}{{ field }}{% endif %} 
+                  <br>
+                  {{ error | striptags }}
+                  <br>
+              {% endfor %}
+              </div>
           </form> 
         </div>
     </div>

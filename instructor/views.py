@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from student.models import *
+from .models import *
 from game.models import *
 
 from .forms import InstructorRegistrationForm
@@ -75,10 +76,14 @@ def create_game(request):
 	form = GameCreationForm()
 	if request.method == 'POST':
 		form = GameCreationForm(request.POST)
+
 		if form.is_valid():
-			# get the id of the instructor that created game and save it in Game.instructor
-			form.save()
-			redirect('games-list')
+			#set foreign key of instructor	
+			nf = form.save(commit=False)
+			nf.instructor = InstructorUser.objects.get(id=request.user.id)
+			nf.save()
+		
+			return redirect('games-list')
 			#redirect to view games
 		
 	context = {'form':form}
@@ -86,8 +91,9 @@ def create_game(request):
 
 @login_required(login_url='login')
 def games_list(request): # (request, pk)
-	games = Game.objects.all()
-	# games = Game.objects.get(instructor=pk)
+	#games = Game.objects.all()
+	#filtered to instructor
+	games = Game.objects.filter(instructor=request.user.id)
 	
 	context = {'games':games}
 	return render(request, 'instructor/games-list.html', context)
