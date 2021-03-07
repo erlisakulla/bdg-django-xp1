@@ -73,6 +73,8 @@ def instructor_settings(request):
 
 @login_required(login_url='login')
 def create_game(request):
+	form_name = "Create Game"
+
 	form = GameCreationForm()
 	if request.method == 'POST':
 		form = GameCreationForm(request.POST)
@@ -86,7 +88,7 @@ def create_game(request):
 			return redirect('games-list')
 			#redirect to view games
 		
-	context = {'form':form}
+	context = {'form':form, 'form_name':form_name}
 	return render(request, 'instructor/create-game.html', context)
 
 @login_required(login_url='login')
@@ -97,3 +99,33 @@ def games_list(request): # (request, pk)
 	
 	context = {'games':games}
 	return render(request, 'instructor/games-list.html', context)
+
+@login_required(login_url='login')
+def update_game(request, pk):
+	form_name = "Update Game"
+
+	game = Game.objects.get(game_id=pk)
+	form = GameCreationForm(instance=game)
+
+	if request.method == 'POST':
+		form = GameCreationForm(request.POST, instance=game)
+
+		if form.is_valid():
+			form.save()
+			return redirect('games-list')
+
+	context = {'form_name':form_name, 'form':form}
+	return render(request, 'instructor/create-game.html', context)
+
+@login_required(login_url='login')
+def delete_game(request, pk):
+	form_name = "Delete Game"
+
+	game = Game.objects.get(game_id=pk)
+
+	if request.method == 'POST':
+		game.delete()
+		return redirect('games-list')
+
+	context = {'form_name':form_name, 'game':game}
+	return render(request, 'instructor/delete-game.html', context)

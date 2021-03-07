@@ -1,0 +1,37 @@
+{% extends 'instructor/navbar.html' %}
+
+{% block content %}
+
+           
+<!-- GAME CREATION FORM -->
+<div class="login-wrap">
+  <div class="card">
+        <div class="card-header">
+            <!-- <strong>Create Game</strong> -->
+            <strong>{{ form_name }}</strong>
+        </div>
+        <div class="login-content">
+        <div class="login-form">
+          <form method="POST" action="{% url 'delete-game' game.game_id%}">
+            {% csrf_token %}
+            <div>
+              Are you sure you want to delete game {{ game.game_id }}
+            </div>
+
+            <div class="card-footer">
+              <a href="/games-list" class="btn btn-danger btn-sm">
+                <i class="fa fa-ban"></i> Cancel
+              </a>
+              <input type="submit" class="btn btn-primary btn-sm" value="Delete" style="cursor: pointer !important;">
+            </div>
+          </form> 
+        </div>
+    </div>
+</div>
+
+<script>
+  var form_fields = document.getElementsByTagName('input')
+  form_fields['player_ids'].placeholder = "Enter ids of players separated by , (e.g. 1,2,3,4)"
+</script>
+  
+{% endblock %}

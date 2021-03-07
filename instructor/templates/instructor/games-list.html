@@ -71,15 +71,16 @@
                         </td>
                         <td>
                             <div class="table-data-feature">
-                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit Settings">
+                                <!-- onclick="window.location.href='/update-game'" -->
+                                <a  class="item" data-toggle="tooltip" data-placement="top" title="Update Settings" href="{% url 'update-game' i.game_id %}">
                                     <i class="zmdi zmdi-edit"></i> <!-- Once game is assigned and has started, you can't edit settings -->
-                                </button>
+                                </a>
                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Assign Game">
                                     <i class="zmdi zmdi-account-add"></i>
                                 </button>
-                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                <a class="item" data-toggle="tooltip" data-placement="top" title="Delete" href="{% url 'delete-game' i.game_id %}">
                                     <i class="zmdi zmdi-delete"></i>
-                                </button>
+                                </a>
                             </div>
                         </td>
                     </tr>

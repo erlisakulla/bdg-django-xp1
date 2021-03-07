@@ -18,7 +18,8 @@ class Game(models.Model):
     starting_inventory = models.IntegerField()
     player_weeks = models.CharField(max_length=20, blank=True) # to be changed so that it is related to 4 other players/roles - foreign key relationship
     instructor = models.ForeignKey('instructor.InstructorUser', null=True, on_delete= models.CASCADE)
-    
+    # passwords
+
     #function should always return string 
     def __str__(self):
 	    return str(self.game_id)
