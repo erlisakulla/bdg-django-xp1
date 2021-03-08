@@ -1,5 +1,6 @@
 # se-01-team-30
-SE Sprint 01, Team 30
+SE Sprint 01, Team 30  
+March 10th, 2021
 
 # Implementation:
 * **Frontend:** HTML, CSS, JS, Bootstrap  
@@ -10,20 +11,71 @@ Below you can find some useful resources and tutorials about Django implementati
 * [CRM Tutorial Playlist](https://www.youtube.com/watch?v=xv_bwpA_aEA&list=PL-51WBLyFTg2vW-_6XBoUpE7vpmoR3ztO)
 * [Django Website](https://www.djangoproject.com)
 
+# Requirements
+1. **[Install Python](https://www.python.org/downloads/)**
+2. **[Install PIP](https://pip.pypa.io/en/latest/installing/#installing-with-get-pip-py)**
+3. **Install Django**
+```
+python -m pip install Django
+```
+
 # Description
-##### What we have implemented so far:
-* Instructor can register and login (we have not implemented student registration and log in)
+### What we have implemented in XP1:
+* Instructor can register and login (we have not implemented student account registration and log in)
 * Student can register for games
 * Instructor can only view registered students that have him/her as an instructor
 * Instructor can create and view list of games created by them (no game logic implemented yet)
+* Instructor can update and delete Games
+* Users can't access dashboard and other internal pages without being logged in
 
-##### Further implementation ideas/aims:
-* Instructor can delete Student or Game from list
-* Instructor can change password and delete their account
+### Project Structure
+Every Django project has a very specific file structure. It contains different 'apps' which serve a specific function in the project. In our case, our apps serve the roles of the different classes needed for the project. You can create new apps using `python manage.py startapp {appname}`. We have implemented the following apps: `instructor`, `student`, `game`. We have also created the following apps but not implemented them: `demand_pattern`, `role`. Every created app must be included in the `INSTALLED_APPS` array in `settings.py`.
 
-# How to run
+##### File Structure
+```
+beer_game/                          # project directory
+    beer_game/                      # main project default app
+        mysite/
+            __init__.py
+            asgi.py
+            settings.py             # settings/configuration for the project
+            urls.py
+            wsgi.py
+    instructor/
+        migrations/ ...             # stores migration files
+        templates/                  # all html templates must be stored here
+            instructor/
+                # html files
+        __init__.py
+        admin.py
+        apps.py
+        filters.py                  # setting up filters from django_filters
+        forms.py                    # includes forms such as the registration form
+        models.py                   # setting up the classes used in the project
+        tests.py                    # used for writing test cases
+        urls.py                     # creates url paths from views
+        views.py                    # setting up web requests and web responses
+    student/ ...
+    game/ ... 
+    ...
+    static/                         # stores static files such as css, js, images etc. 
+        css/                        # write {% load static %} inside templates
+        js/
+        ...
+    db.sqlite3                      # default Django database is SQLite
+    manage.py                       # command-line utility to interact with the project
+```
 
-Assumming that you have ```pip``` and ```django``` installed you can run the project by moving inside the project directory and running the command  
+##### Migrations
+Migrations are a way of propagating the changes you make to your models (adding a field, deleting a model, etc.) into your database schema. They're mostly automatic, but you'll know when migrations are neccessary to make as they will appear on the terminal. You use the following commands to migrate
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
+# How to run locally
+
+Inside the project directory and run the command  
 ```
 python manage.py runserver
 ```
@@ -33,7 +85,6 @@ If you get errors, make sure you have psycopg2 module installed:
 pip install psycopg2-binary
 ```
 
-
 Then go to the address provided by the server: http://127.0.0.1:8000/. It will take you to the main home page. To access admin features and the database provided by django itself simply go to http://127.0.0.1:8000/admin/. Which will require you to enter an email and password. We created an admin user with the credentials below:   
 * **Email:** manager@beergame.com	 
 * **Password:** manager  
@@ -42,3 +93,5 @@ You can create another admin user by running ```python manage.py createsuperuser
 Some pages, for example the dashboard, are only accessible after Login so in order to open them you have to be logged in. You can use the credentials provided above in the Instructor Login Form or you can register a user using the Instructor Registration Form (these users do not have admin permissions) and then login with the created data. These pages are available the whole time you are logged in.
 
 # Testing
+
+# Deployment
