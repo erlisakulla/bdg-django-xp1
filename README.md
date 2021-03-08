@@ -95,3 +95,6 @@ Some pages, for example the dashboard, are only accessible after Login so in ord
 # Testing
 
 # Deployment
+This project is deployed using Heroku and can be accessed through https://bdg-test.herokuapp.com. However this is connected to a personal account and if necessary, we could either add other members as collaborators or deactivate the current deployment, and the next team can re-deploy this project on their personal accounts. A tutorial on how to deploy to Heroku can be found [here](https://www.youtube.com/watch?v=kBwhtEIXGII&t=1145s).
+
+Issues and errors can be seen through the Heroku logs (More > View logs). This might mean that you won't be able to run the project locally, however every change that you make to the project and commit to this repository will be automatically rebuilt by Heroku if you enable automatic deploys.
