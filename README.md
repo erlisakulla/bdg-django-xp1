@@ -100,7 +100,7 @@ You can create another admin user by running ```python manage.py createsuperuser
 Some pages, for example the dashboard, are only accessible after Login so in order to open them you have to be logged in. You can use the credentials provided above in the Instructor Login Form or you can register a user using the Instructor Registration Form (these users do not have admin permissions) and then login with the created data. These pages are available the whole time you are logged in.
 
 # Testing
-Inside the project directory and run the command  
+Inside the project directory and run the command.  
 ```
 python manage.py test
 ```
@@ -118,6 +118,7 @@ Run the specified class
 ```
 python3 manage.py test instructor.tests.test_models.YourTestClass
 ```
+You might find this [guide](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing) on testing Django projects helpful.
 
 # Deployment
 This project is deployed using Heroku and can be accessed through https://bdg-test.herokuapp.com. However this is the deployment of the forked repository and it is connected to a personal account. Other teams, could also deploy it by connecting Heroku to this repository or another forked one. A tutorial on how to deploy to Heroku can be found [here](https://www.youtube.com/watch?v=kBwhtEIXGII&t=1145s).
