@@ -62,7 +62,10 @@ beer_game/                          # project directory
         filters.py                  # setting up filters from django_filters
         forms.py                    # includes forms such as the registration form
         models.py                   # setting up the classes used in the project
-        tests.py                    # used for writing test cases
+        tests/                      # stores test cases
+            test_models.py          # test cases for models
+            test_views.py           # test cases for views(endpoints)
+            test_forms.py           # test cases for custom validators in forms
         urls.py                     # creates url paths from views
         views.py                    # setting up web requests and web responses
     student/ ...
