@@ -92,12 +92,6 @@ Inside the project directory and run the command
 ```
 python manage.py runserver
 ```
-If you get errors, make sure you have psycopg2 module installed: 
-
-```
-pip install psycopg2-binary
-```
-
 Then go to the address provided by the server: http://127.0.0.1:8000/. It will take you to the main home page. To access admin features and the database provided by django itself simply go to http://127.0.0.1:8000/admin/. Which will require you to enter an email and password. We created an admin user with the credentials below:   
 * **Email:** manager@beergame.com	 
 * **Password:** manager  
@@ -106,6 +100,24 @@ You can create another admin user by running ```python manage.py createsuperuser
 Some pages, for example the dashboard, are only accessible after Login so in order to open them you have to be logged in. You can use the credentials provided above in the Instructor Login Form or you can register a user using the Instructor Registration Form (these users do not have admin permissions) and then login with the created data. These pages are available the whole time you are logged in.
 
 # Testing
+Inside the project directory and run the command  
+```
+python manage.py test
+```
+If you want to run a subset of your tests you can do so by specifying the full dot path to the package(s), module, TestCase subclass:
+
+Run the specified module
+```
+python3 manage.py test catalog.tests
+```
+Run the specified module
+```
+python3 manage.py test catalog.tests.test_models
+```
+Run the specified class
+```
+python3 manage.py test catalog.tests.test_models.YourTestClass
+```
 
 # Deployment
 This project is deployed using Heroku and can be accessed through https://bdg-test.herokuapp.com. However this is the deployment of the forked repository and it is connected to a personal account. Other teams, could also deploy it by connecting Heroku to this repository or another forked one. A tutorial on how to deploy to Heroku can be found [here](https://www.youtube.com/watch?v=kBwhtEIXGII&t=1145s).
