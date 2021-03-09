@@ -108,15 +108,15 @@ If you want to run a subset of your tests you can do so by specifying the full d
 
 Run the specified module
 ```
-python3 manage.py test catalog.tests
+python3 manage.py test instructor.tests
 ```
 Run the specified module
 ```
-python3 manage.py test catalog.tests.test_models
+python3 manage.py test instructor.tests.test_models
 ```
 Run the specified class
 ```
-python3 manage.py test catalog.tests.test_models.YourTestClass
+python3 manage.py test instructor.tests.test_models.YourTestClass
 ```
 
 # Deployment
